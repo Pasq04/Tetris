@@ -3,7 +3,8 @@ A tetris sample made in pygame
 
 ## How to play
 Clone this repo on your computer and run from command line using this command:
-'''bash
+
+'''
 python3 tetris.py
 '''
 
