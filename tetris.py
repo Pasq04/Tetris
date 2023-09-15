@@ -165,6 +165,20 @@ def clearRow(i):
     for j in range(len(grid_matrix[i])):
         grid_matrix[i][j] = 0
 
+def shiftRows():
+    for i in range(len(grid_matrix) - 1, 1, -1):
+        to_swap = True
+
+        for j in range(len(grid_matrix[i])):
+            if grid_matrix[i][j] != 0:
+                to_swap = False
+                break
+
+        if to_swap:
+            tmp_row = grid_matrix[i]
+            grid_matrix[i] = grid_matrix[i - 1]
+            grid_matrix[i - 1] = tmp_row
+
 def deleteCompleteRows():
     global score
     for i in range(len(grid_matrix)):
@@ -179,7 +193,8 @@ def deleteCompleteRows():
             score += SCORE_ROW_COMPLETE
             clearRow(i)
 
-# TODO riparti da qui
+    shiftRows()
+
 def checkDefeat(shape, x, y):
     #SE NON POSSO DISEGNARE IL BLOCCO, IL GIOCATORE HA PERSO!!!
     tmp_block_position = get_temp_block_position(shape, x, y)
